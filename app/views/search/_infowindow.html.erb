@@ -5,30 +5,32 @@
     </label>
     <hr/>
   </div>
-  <div>
+  <div id="list_space_in_window">
     <% spaces.each do |space| %>
-      <div class="col-lg-12">
-        <div class="col-lg-4">
-          <% if space.images.any? %>
-            <%= image_tag space.images.first.picture.url, class: "space_icon" %>
-          <% else %>
-            <%= image_tag "not_available", class: "space_icon" %>
-          <% end %>
+      <div class="space_in_window" data-price="<%= space.price_per_day.price %>">
+        <div class="col-lg-12">
+          <div class="col-lg-4">
+            <% if space.images.any? %>
+              <%= image_tag space.images.first.picture.url, class: "space_icon" %>
+            <% else %>
+              <%= image_tag "not_available", class: "space_icon" %>
+            <% end %>
+          </div>
+          <div class="col-lg-6">
+            <%= link_to search_space_path(space), remote: true, id: space.id, target: :_blank do %>
+              <strong><%= space.name %></strong>
+            <% end %><br/>
+            <% space.prices.each_with_index do |price, index| %>
+              <%= show_price_per_day_month price, index %>
+            <% end %>
+          </div>
+          <div class ="col-lg-2">
+            <i class="fa fa-user-o"></i><%= space.capicity %>
+          </div>
         </div>
-        <div class="col-lg-6">
-          <%= link_to search_space_path(space), remote: true, id: space.id, target: :_blank do %>
-            <strong><%= space.name %></strong>
-          <% end %><br/>
-          <% space.prices.each_with_index do |price, index| %>
-            <%= show_price_per_day_month price, index %>
-          <% end %>
+        <div class="col-md-12">
+          <hr/>
         </div>
-        <div class ="col-lg-2">
-          <i class="fa fa-user-o"></i><%= space.capicity %>
-        </div>
-      </div>
-      <div class="col-md-12">
-        <hr/>
       </div>
     <% end %>
   </div>

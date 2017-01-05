@@ -8,7 +8,7 @@
       <div id="map"></div>
     </div>
   </div>
-  <div class="max-height-x padding-left-0 padding-right-0 scroll-y" id="map_booking_content">
+  <div class="max-height-x padding-left-0 padding-right-0 scroll-y map_booking_content" id="map_booking_content">
     <div class="block-full">
       <div class="widget">
         <%= form_tag search_spaces_path, method: :get, id: "search-space-form" do %>
@@ -26,7 +26,7 @@
             </div>
           <% end %>
       </div>
-      <div class = "widget margin-bottom-x" id = "fixed-top-last">
+      <div class = "widget margin-bottom-x filterSystem" id = "fixed-top-last">
         <div class="col-md-12">
           <label id = "label-space"><%= t ".space_type"%><span class="box"></span></label>
           <div class="col-md-6 col-lg-3">
@@ -54,6 +54,33 @@
             <% end %>
           </div>
         </div>
+        <div class="col-md-12">
+          <hr class="hrule-divider--lg">
+          <label id = "label-space">
+            <%= t ".price_range" %>
+          </label>
+        </div>
+        <div class = "col-md-12">
+          <div class="col-md-2">
+            <input id="price_amount" value="<%= Settings.default_price_range %>"
+              disabled="true" class="show_price"></input>
+          </div>
+          <div class="col-md-10">
+            <input id = "filter_slider" class="input-slider" data-slider-step="<%= Settings.data_slider_step %>"
+              data-slider-min="<%= Settings.data_slider_min %>" data-slider-max="<%= Settings.data_slider_max %>"
+              data-slider-value="<%= Settings.data_slider_value %>">
+          </div>
+        </div>
+        <div class="col-md-12">
+          <hr class="hrule-divider--lg">
+          <div class="pull-right">
+            <%= select_tag :space_sort_by,
+              options_for_select(Settings.space_sort_by,
+              params[:space_sort_by]), class: "select-capitalize form-control",
+              include_blank: false, required: false, method: :get, id: "sort-space",
+              data: {url: order_histories_path(params: {status: params[:status]})} %><br/>
+          </div>
+        </div>
       </div>
       <%= hidden_field_tag "markers-on-map", @hash.to_json %>
       <%= hidden_field_tag "current_lat", Settings.default_latitude %>
@@ -62,5 +89,8 @@
         <%= render "search_result" %>
       </div>
     </div>
+  </div>
+  <div class="max-height-x padding-left-0 padding-right-0 scroll-y
+    map_show_booking_content display-none" id="map_show_booking_content">
   </div>
 </div>

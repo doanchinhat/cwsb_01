@@ -28,6 +28,8 @@ $(function(){
 
 $(document).ready(function(){
   $('.close-space-detail').on('click', function(){
-    $('#map_booking_content').load(location.href + ' #map_booking_content');
+    $('#map_show_booking_content').load(location.href + ' #map_show_booking_content');
+    $('#map_show_booking_content').addClass('display-none');
+    $('#map_booking_content').show();
   });
 });

@@ -1,1 +1,3 @@
-$('#map_booking_content').html('<%= escape_javascript(render "show_space") %>');
+$('#map_booking_content').hide();
+$('#map_show_booking_content').removeClass('display-none');
+$('#map_show_booking_content').html('<%= escape_javascript(render "show_space") %>');

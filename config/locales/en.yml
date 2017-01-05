@@ -51,6 +51,7 @@ en:
   detail: "DETAIL"
   vnd_slash: "VND/"
   usd_slash: "USD/"
+  money_symbol: "$"
   book_now: "Book now"
   clickable_venue: "VENUE"
   clickable_details: "DETAILS"
@@ -264,6 +265,7 @@ en:
     place_holder: "Enter location"
     spaces:
       index:
+        price_range: "Price range(USD/day)"
         maps: "Maps"
         find_space: "Find space"
         space_type: "Space type"

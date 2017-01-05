@@ -27,4 +27,13 @@ class Space < ApplicationRecord
   delegate :name, to: :venue, prefix: true, allow_nil: true
   delegate :description, to: :venue, prefix: true, allow_nil: true
   delegate :details, to: :address, prefix: true, allow_nil: true
+
+  def price_per_day
+    prices.find_by booking_type: type_day
+  end
+
+  private
+  def type_day
+    BookingType.all.find_by name: Settings.booking_type.day
+  end
 end

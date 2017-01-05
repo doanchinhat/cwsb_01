@@ -57,6 +57,7 @@ user: "User"
 client_service : "client_service"
 reception : "reception"
 payment_methods_filter: {all: "", paypal: "Paypal", banking: "UserPaymentBanking" , directly: "UserPaymentDirectly"}
+space_sort_by: {"Sort by": "", "Price: Low to High": price_low, "Price: High to Low": price_high}
 status_filter: {all: "", requested: 0, pending: 1, paid: 2, closed: 3}
 picture_max_size: 5
 admin:
@@ -65,3 +66,9 @@ admin:
   venues:
     per_page: 10
 precision_number: 0
+data_slider_min: 1
+data_slider_max: 1000
+data_slider_step: 1
+data_slider_value: [0,500]
+default_price_range: "$1 - $500"
+booking_type: {hour: "Hour", day: "Day", week: "Week", month: "Month"}
