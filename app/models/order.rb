@@ -52,10 +52,10 @@ class Order < ApplicationRecord
       .payment_methods_filter.paypal && self.status != Order.statuses[:paid]
       date = self.updated_at + self.payment_detail.pending_time.hours
       if date > Time.current
-        self.update_attributes status: Order.statuses[:closed]
         self.bookings.each do |booking|
           booking.update_attributes state: Booking.states[:rejected]
         end
+        self.update_attributes status: Order.statuses[:closed]
       end
     end
   end
