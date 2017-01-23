@@ -479,6 +479,7 @@ en:
       directly_not_found: "Directly payment method not found!"
   spaces:
     index:
+      add_space: "Add Space"
       edit: "Edit"
       capicity: "Capicity: "
       delete: "Delete"

@@ -7,7 +7,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :async,
     :recoverable, :rememberable, :trackable, :validatable,
     :confirmable,:omniauthable, omniauth_providers: [:facebook, :google_oauth2]
-  
+
   ratyrate_rater
   
   has_one :image

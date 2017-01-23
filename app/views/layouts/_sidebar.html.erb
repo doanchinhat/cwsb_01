@@ -55,10 +55,10 @@
           </div>
           <div class="col-md-12 padding-top-10">
             <li class="dropdown chosen-language">
-              <% if params[:locale].present? %>
-                <%= link_to url_for(locale: params[:locale]), class:"dropdown-toggle", data: {toggle: "dropdown"} do %>
-                  <%= image_tag "flag/#{params[:locale]}.png", class: "icon-language" %>
-                  <%= Settings.languages[params[:locale]] %>
+              <% if session[:locale].present? %>
+                <%= link_to url_for(locale: session[:locale]), class:"dropdown-toggle", data: {toggle: "dropdown"} do %>
+                  <%= image_tag "flag/#{session[:locale]}.png", class: "icon-language" %>
+                  <%= Settings.languages[session[:locale]] %>
                 <% end %>
               <% else %>
                 <%= link_to url_for(locale: :en), class:"dropdown-toggle icon-language", data: {toggle: "dropdown"} do %>
